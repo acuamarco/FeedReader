@@ -1,3 +1,4 @@
+using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -20,6 +21,8 @@ namespace FeedReader.Repository.Model
         public string Image { get; set; }
 
         public int FeedId { get; set; }
+
+        public DateTime PublishedDate { get; set; }
 
         public virtual Feed Feed { get; set; }
     }
