@@ -48,7 +48,7 @@ namespace FeedReader.Web.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "Id,FirstName,LastName,Email,IsAdmin")] User user)
+        public async Task<ActionResult> Create([Bind(Include = "Id,FirstName,LastName,Email,IsAdmin,Password")] User user)
         {
             if (ModelState.IsValid)
             {
@@ -80,7 +80,7 @@ namespace FeedReader.Web.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "Id,FirstName,LastName,Email,IsAdmin")] User user)
+        public async Task<ActionResult> Edit([Bind(Include = "Id,FirstName,LastName,Email,IsAdmin,Password")] User user)
         {
             if (ModelState.IsValid)
             {
