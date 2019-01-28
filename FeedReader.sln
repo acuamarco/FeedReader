@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FeedReader.Repository", "Fe
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FeedReader.Services", "FeedReader.Services\FeedReader.Services.csproj", "{4A6545E7-B814-4A97-B8A8-DACD81930A9E}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UnitTest", "UnitTest", "{7AA71B37-D482-4DC2-B171-B454A3FE79E0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FeedReader.Repository.Tests", "UnitTest\FeedReader.Repository.Tests\FeedReader.Repository.Tests.csproj", "{8A676A1F-A9D4-4D59-BD16-7C6B3C363FBF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,9 +25,16 @@ Global
 		{4A6545E7-B814-4A97-B8A8-DACD81930A9E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4A6545E7-B814-4A97-B8A8-DACD81930A9E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4A6545E7-B814-4A97-B8A8-DACD81930A9E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8A676A1F-A9D4-4D59-BD16-7C6B3C363FBF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8A676A1F-A9D4-4D59-BD16-7C6B3C363FBF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8A676A1F-A9D4-4D59-BD16-7C6B3C363FBF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8A676A1F-A9D4-4D59-BD16-7C6B3C363FBF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{8A676A1F-A9D4-4D59-BD16-7C6B3C363FBF} = {7AA71B37-D482-4DC2-B171-B454A3FE79E0}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {2A0EDC0F-75B3-44EC-981C-5B61DDB150E8}
