@@ -7,6 +7,8 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using FeedReader.Web.Models;
+using FeedReader.Repository;
+using FeedReader.Services;
 
 namespace FeedReader.Web.Controllers
 {
@@ -64,13 +66,16 @@ namespace FeedReader.Web.Controllers
                 : "";
 
             var userId = User.Identity.GetUserId();
+
+            var feedService = new FeedService(new FeedReaderContext());
             var model = new IndexViewModel
             {
                 HasPassword = HasPassword(),
                 PhoneNumber = await UserManager.GetPhoneNumberAsync(userId),
                 TwoFactor = await UserManager.GetTwoFactorEnabledAsync(userId),
                 Logins = await UserManager.GetLoginsAsync(userId),
-                BrowserRemembered = await AuthenticationManager.TwoFactorBrowserRememberedAsync(userId)
+                BrowserRemembered = await AuthenticationManager.TwoFactorBrowserRememberedAsync(userId),
+                Feeds = await feedService.GetByUser(userId)
             };
             return View(model);
         }

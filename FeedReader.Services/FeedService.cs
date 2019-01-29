@@ -2,6 +2,9 @@
 using System.Threading.Tasks;
 using FeedReader.Repository;
 using FeedReader.Repository.Model;
+using System.Data.Entity;
+using System.Linq;
+using System.Collections.Generic;
 
 namespace FeedReader.Services
 {
@@ -21,6 +24,13 @@ namespace FeedReader.Services
                 user.Feeds.Add(feed);
                 context.SaveChanges();
             }
+        }
+
+        public async Task<List<Feed>> GetByUser(string userId)
+        {
+            return await context.Feeds
+                .Where(f => f.Users.Any(u => u.Id == userId))
+                .ToListAsync();
         }
 
         public async Task<Feed> GetByIdWithCategory(int feedId)
