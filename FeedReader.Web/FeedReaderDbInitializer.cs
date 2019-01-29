@@ -14,14 +14,15 @@ namespace FeedReader.Web
     {
         public void InitializeDatabase(FeedReaderContext context)
         {
-            if (!context.Database.Exists())
+            if (context.Database.Exists())
             {
-                context.Database.Create();
+                context.Database.Delete();
             }
+            context.Database.Create();
 
-            var user1 = new AspNetUser() { Id = "marco" , Email = "marco@rodriguezcoto.com", PasswordHash = "123" };
-            var user2 = new AspNetUser() { Id = "john", Email = "jdoe@none.com", PasswordHash = "123" };
-            var user3 = new AspNetUser() { Id = "janne", Email = "jsmith@noemail.com", PasswordHash = "123" };
+            var user1 = CreateUser("marco" , "marco@rodriguezcoto.com");
+            var user2 = CreateUser("john", "jdoe@none.com");
+            var user3 = CreateUser("janne", "jsmith@noemail.com");
             context.AspNetUsers.AddOrUpdate(p => p.Id, user1);
             context.AspNetUsers.AddOrUpdate(p => p.Id, user2);
             context.AspNetUsers.AddOrUpdate(p => p.Id, user3);
@@ -54,6 +55,22 @@ namespace FeedReader.Web
             feed1.Articles.Add(article1);
 
             context.SaveChanges();
+        }
+
+        public AspNetUser CreateUser(string id, string email)
+        {
+            return new AspNetUser()
+            {
+                Id = id,
+                Email = email,
+                EmailConfirmed = true,
+                PasswordHash = "123",
+                PhoneNumberConfirmed = true,
+                TwoFactorEnabled = false,
+                LockoutEnabled = false,
+                AccessFailedCount = 0,
+                UserName = id
+            };
         }
     }
 }
