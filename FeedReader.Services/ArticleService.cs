@@ -59,5 +59,14 @@ namespace FeedReader.Services
                 .Take(max)
                 .ToListAsync();
         }
+
+        public async Task<List<Article>> Search(string term, int max = 12)
+        {
+            return await context.Articles
+                .Where(a => a.Title.Contains(term))
+                .OrderByDescending(a => a.PublishedDate)
+                .Take(max)
+                .ToListAsync();
+        }
     }
 }

@@ -14,7 +14,7 @@ namespace FeedReader.Web.Controllers
     {
         private FeedReaderContext db = new FeedReaderContext();
 
-        public async Task<ActionResult> Index()
+        public async Task<ActionResult> Index(string search)
         {
             var articleService = new ArticleService(db);
             var dashboard = new Dashboard
@@ -23,12 +23,24 @@ namespace FeedReader.Web.Controllers
                 Feeds = await db.Feeds.ToListAsync()
             };
             var userId = "";
-            if (User.Identity.IsAuthenticated)
+            if (search == null)
             {
-                userId = User.Identity.GetUserId();
-                dashboard.Articles = await articleService.GetByUser(userId);
+                if (User.Identity.IsAuthenticated)
+                {
+                    userId = User.Identity.GetUserId();
+                    dashboard.Articles = await articleService.GetByUser(userId);
+                }
+                ViewBag.OtherArticlesTitle = "Articles you may like";
+                dashboard.OtherArticles = await articleService.GetLast(userId);
             }
-            dashboard.OtherArticles = await articleService.GetLast(userId);
+            else
+            {
+
+                dashboard.OtherArticles = await articleService.Search(search);
+                ViewBag.OtherArticlesTitle = "Searching for: " + search;
+                ViewBag.Search = search;
+            }
+            
             return View(dashboard);
         }
 

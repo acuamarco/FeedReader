@@ -20,11 +20,15 @@
                 @Html.ActionLink("Feed Reader", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
-                <div class="nav-search">
-
-                </div>
                 @Html.Partial("_LoginPartial")
             </div>
+        </div>
+        <div class="nav-search">
+            @using (Html.BeginForm("Index", "Home", FormMethod.Get))
+            {
+                <input type="text" name="search" value="@ViewBag.Search" />
+                <input type="submit" value="Search" />
+            }
         </div>
         @RenderBody()
         <hr />

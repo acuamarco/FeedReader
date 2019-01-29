@@ -147,3 +147,8 @@ textarea {
     justify-content: flex-end;
     font-style: italic;
 }
+
+.nav-search {
+    display: flex;
+    justify-content: flex-end;
+}

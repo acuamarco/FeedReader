@@ -11,5 +11,6 @@ namespace FeedReader.Services
         Task<Article> GetById(int articleId);
         Task<List<Article>> GetByUser(string userId, int max = 12);
         Task<List<Article>> GetLast(string userId, int max = 12);
+        Task<List<Article>> Search(string term, int max = 12);
     }
 }
