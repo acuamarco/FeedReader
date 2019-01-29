@@ -1,0 +1,16 @@
+﻿@model List<FeedReader.Repository.Model.Article>
+
+@if (Model != null && Model.Count > 0)
+{
+    <div class="article-section">
+        @foreach (var article in Model)
+        {
+            <div class="fixed-article-card">
+                <a href="@Url.Action("Article", "Home", new { articleId = article.Id })" class="fixed-article-card-title">@article.Title</a>
+                <div class="fixed-article-card-description">
+                    @Html.Raw(article.Body)
+                </div>
+            </div>
+        }
+    </div>
+}
