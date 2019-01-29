@@ -13,20 +13,21 @@
         @Html.ActionLink(Model.Feed.Category.Name, "Category", "Home", new { categoryId = Model.Feed.Category.Id }, null)
     </li>
 </ol>
-
-<img src="@Model.Feed.Image" class="category-image" />
-
-@if (Request.IsAuthenticated)
-{
-    if (Model.Followed)
+<div class="feed-follow-div">
+    @if (Request.IsAuthenticated)
     {
-        <a href="@Url.Action("Feed", "Home", new { feedId = Model.Feed.Id, follow = 0 })" class="feed-follow">Unfollow</a>
-    } else {
-        <a href="@Url.Action("Feed", "Home", new { feedId = Model.Feed.Id, follow = 1 })" class="feed-follow">Follow</a>
+        if (Model.Followed)
+        {
+            <a href="@Url.Action("Feed", "Home", new { feedId = Model.Feed.Id, follow = 0 })" class="feed-follow">Unfollow</a>
+        }
+        else
+        {
+            <a href="@Url.Action("Feed", "Home", new { feedId = Model.Feed.Id, follow = 1 })" class="feed-follow">Follow</a>
+        }
+
+
     }
-
-
-}
-<div class="feed-name">@Model.Feed.Name</div>
+</div>
+<div class="feed-title">@Model.Feed.Name</div>
 
 @Html.Partial("_ArticlesSection", Model.Articles)

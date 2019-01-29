@@ -23,6 +23,9 @@
 
 @if (Model.Articles != null && Model.Articles.Count > 0)
 {
+    <h3>
+        Your articles
+    </h3>
     @Html.Partial("_ArticlesSection", Model.Articles)
 }
 else
@@ -34,5 +37,8 @@ else
 
 @if (Model.OtherArticles != null && Model.OtherArticles.Count > 0)
 {
+    <h3>
+        Articles you may like
+    </h3>
     @Html.Partial("_ArticlesSection", Model.OtherArticles)
 }

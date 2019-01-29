@@ -6,7 +6,7 @@
         @foreach (var feed in Model)
         {
         <div class="feed-thumb">
-            <a href="@Url.Action("Feed", "Home", new { feedId = feed.Id })" class="feed-title ">@feed.Name</a>
+            <a href="@Url.Action("Feed", "Home", new { feedId = feed.Id })">@feed.Name</a>
         </div>
         }
     </div>
