@@ -5,8 +5,7 @@ namespace FeedReader.Repository
 {
     public partial class FeedReaderContext : DbContext
     {
-        public FeedReaderContext()
-            : base("DefaultConnection")
+        public FeedReaderContext() : base("DefaultConnection")
         {
         }
 
@@ -14,6 +13,7 @@ namespace FeedReader.Repository
         public virtual DbSet<AspNetRole> AspNetRoles { get; set; }
         public virtual DbSet<AspNetUserClaim> AspNetUserClaims { get; set; }
         public virtual DbSet<AspNetUserLogin> AspNetUserLogins { get; set; }
+        public virtual DbSet<AspNetUserRole> AspNetUserRoles { get; set; }
         public virtual DbSet<AspNetUser> AspNetUsers { get; set; }
         public virtual DbSet<Category> Categories { get; set; }
         public virtual DbSet<Feed> Feeds { get; set; }

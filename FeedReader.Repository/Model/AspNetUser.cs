@@ -13,7 +13,7 @@ namespace FeedReader.Repository.Model
         {
             AspNetUserClaims = new HashSet<AspNetUserClaim>();
             AspNetUserLogins = new HashSet<AspNetUserLogin>();
-            AspNetRoles = new HashSet<AspNetRole>();
+            AspNetUserRoles = new HashSet<AspNetRole>();
             Categories = new HashSet<Category>();
             Feeds = new HashSet<Feed>();
         }
@@ -52,7 +52,7 @@ namespace FeedReader.Repository.Model
         public virtual ICollection<AspNetUserLogin> AspNetUserLogins { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<AspNetRole> AspNetRoles { get; set; }
+        public virtual ICollection<AspNetRole> AspNetUserRoles { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Category> Categories { get; set; }
