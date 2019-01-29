@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Data.Entity.Migrations;
+using System.IO;
 using System.Linq;
 using System.Web;
+using System.Web.Hosting;
 using FeedReader.Repository;
 using FeedReader.Repository.Model;
-
+using Newtonsoft.Json;
 
 namespace FeedReader.Web
 {
@@ -27,25 +29,74 @@ namespace FeedReader.Web
                 context.Database.Create();
             }
 
-            var category1 = new Category() { Id = 1, Name = "Sports", Image = "/Content/Categories/sports.jpg" };
-            var category2 = new Category() { Id = 2, Name = "Gardening", Image = "/Content/Categories/gardening.jpg" };
-            var category3 = new Category() { Id = 3, Name = "Cooking", Image = "/Content/Categories/cooking.jpg" };
-            context.Categories.AddOrUpdate(p => p.Id, category1);
-            context.Categories.AddOrUpdate(p => p.Id, category2);
-            context.Categories.AddOrUpdate(p => p.Id, category3);
+            var data = JsonConvert.DeserializeObject<JsonFile>(File.ReadAllText(HttpContext.Current.Server.MapPath("data.json")));
 
+            var categoryId = 1;
+            var feedId = 1;
+            var articleId = 1;
+            foreach (var jsonCategory in data.Categories)
+            {
+                var category = new Category() {
+                    Id = categoryId++,
+                    Name = jsonCategory.Name,
+                    Image = "/Content/Categories/" + jsonCategory.Name.ToLower().Replace(' ', '_') +  ".jpg"
+                };
+                context.Categories.AddOrUpdate(p => p.Id, category);
+                
+                foreach(var jsonFeed in jsonCategory.Feeds)
+                {
+                    var feed = new Feed()
+                    {
+                        Id = feedId++,
+                        Name = jsonFeed.Name,
+                        Category = category,
+                        CategoryId = category.Id,
+                        Description = jsonFeed.Name + " articles",
+                        Image = "/Content/Feed/" + jsonFeed.Name.ToLower().Replace(' ', '_') + ".jpg"
+                    };
 
-            var feed1 = new Feed() { Id = 1, Name = "Fitness", Category = category1, CategoryId = 1, Description = "Fitness articles", Image = "/Content/Categories/fitness.jpg" };
-            var feed2 = new Feed() { Id = 2, Name = "Italian Food", Category = category3, CategoryId = 3, Description = "Italian Food articles", Image = "/Content/Categories/italian_food.jpg" };
-            context.Feeds.AddOrUpdate(p => p.Id, feed1);
-            context.Feeds.AddOrUpdate(p => p.Id, feed2);
+                    context.Feeds.AddOrUpdate(p => p.Id, feed);
 
-            var article1 = new Article() { Id = 1, Title = "The 9 Best Sports to Accelerate Your Weight Loss", Body = "Swimming <br /> HIIT (High Intensity Interval Training) <br /> Running <br /> Rock Climbing <br /> Flag Football ...<br />", Feed = feed1, FeedId = 1, Image = "/Content/Categories/fitness.jpg", PublishedDate = DateTime.Parse("2018/12/24") };
-            context.Articles.AddOrUpdate(article1);
-
-            feed1.Articles.Add(article1);
-
+                    foreach (var jsonArticle in jsonFeed.Articles)
+                    {
+                        var article = new Article() {
+                            Id = articleId++,
+                            Title = jsonArticle.Title,
+                            Body = "",
+                            Feed = feed,
+                            FeedId = feed.Id,
+                            Image = "",
+                            PublishedDate = DateTime.Parse(jsonArticle.Date)
+                        };
+                        context.Articles.AddOrUpdate(article);
+                    }
+                }
+            }
             context.SaveChanges();
         }
     }
+
+    public class JsonFile
+    {
+        public List<JsonCategory> Categories { get; set; }
+    }
+
+    public class JsonCategory
+    {
+        public string Name { get; set; }
+        public List<JsonFeed> Feeds { get; set; }
+    }
+
+    public class JsonFeed
+    {
+        public string Name { get; set; }
+        public List<JsonArticle> Articles { get; set; }
+    }
+
+    public class JsonArticle
+    {
+        public string Title { get; set; }
+        public string Date { get; set; }
+    }
+
 }

@@ -1,0 +1,207 @@
+﻿{
+  "Categories": [
+    {
+      "Name": "Culture",
+      "Feeds": [
+        {
+          "Name": "Internet Culture",
+          "Articles": [
+            {
+              "Title": "What Was the Intellectual Dark Web?",
+              "Date": "2019/01/25"
+            },
+            {
+              "Title": "Tumblr Too",
+              "Date": "2019/01/20"
+            }
+          ]
+        },
+        {
+          "Name": "Music",
+          "Articles": [
+            {
+              "Title": "Copycat Songs",
+              "Date": "2019/01/29"
+            },
+            {
+              "Title": "Making Music with Machine Learning",
+              "Date": "2019/01/28"
+            }
+          ]
+        },
+        {
+          "Name": "Film",
+          "Articles": [
+            {
+              "Title": "Why You Should Go to the Movies on Your Next Trip",
+              "Date": "2019/01/20"
+            },
+            {
+              "Title": "Fifty Years of Bond: Who’s the Best?",
+              "Date": "2019/01/28"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Name": "Tech",
+      "Feeds": [
+        {
+          "Name": "Software Engineering",
+          "Articles": [
+            {
+              "Title": "You Can’t Build an iPhone With Python",
+              "Date": "2018/12/12"
+            },
+            {
+              "Title": "The Rise of 'No Code'",
+              "Date": "2019/01/27"
+            }
+          ]
+        },
+        {
+          "Name": "Programming",
+          "Articles": [
+            {
+              "Title": "The Hard Part of Computer Science? Getting Into Class",
+              "Date": "2019/01/24"
+            },
+            {
+              "Title": "How to produce meaningful datasets using only SQL",
+              "Date": "2019/01/29"
+            }
+          ]
+        },
+        {
+          "Name": "Data Science",
+          "Articles": [
+            {
+              "Title": "Essential Math for Data Science",
+              "Date": "2019/01/4"
+            },
+            {
+              "Title": "Fake news or not?",
+              "Date": "2019/01/29"
+            }
+          ]
+        },
+        {
+          "Name": "Machine Learning",
+          "Articles": [
+            {
+              "Title": "Awesome Reinforcement Learning Applications",
+              "Date": "2019/01/29"
+            },
+            {
+              "Title": "A.I. enhanced molecular discovery and optimization",
+              "Date": "2019/01/29"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Name": "Health",
+      "Feeds": [
+        {
+          "Name": "Mental Health",
+          "Articles": [
+            {
+              "Title": "Loneliness and Our Human Need for Others",
+              "Date": "2019/01/28"
+            },
+            {
+              "Title": "How Social Anxiety Can Reinforce Itself",
+              "Date": "2019/01/28"
+            }
+          ]
+        },
+        {
+          "Name": "Neuroscience",
+          "Articles": [
+            {
+              "Title": "Can Our Minds Live Forever?",
+              "Date": "2019/01/29"
+            },
+            {
+              "Title": "6 Simple Ways You Can Use Neuroscience To Improve Your Day",
+              "Date": "2019/01/26"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Name": "Science",
+      "Feeds": [
+        {
+          "Name": "Space",
+          "Articles": [
+            {
+              "Title": "Meet the Alien Whisperer",
+              "Date": "2019/01/23"
+            },
+            {
+              "Title": "A Universe Made of Tiny, Random Chunks",
+              "Date": "2018/08/16"
+            }
+          ]
+        },
+        {
+          "Name": "Math",
+          "Articles": [
+            {
+              "Title": "Big O notation — solve any equation with this tutorial",
+              "Date": "2019/01/29"
+            },
+            {
+              "Title": "Towards a simple theorem prover",
+              "Date": "2019/01/26"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Name": "Design",
+      "Feeds": [
+        {
+          "Name": "UX",
+          "Articles": [
+            {
+              "Title": "A Tale of Two UX Teams",
+              "Date": "2019/01/25"
+            },
+            {
+              "Title": "Asking why: the secret to being a great UX designer",
+              "Date": "2019/01/29"
+            }
+          ]
+        },
+        {
+          "Name": "Visual Design",
+          "Articles": [
+            {
+              "Title": "Measuring the Impact of a Design System",
+              "Date": "2019/01/29"
+            },
+            {
+              "Title": "Optimising CSS background images for Web. HERO banner optimisation tutorial",
+              "Date": "2019/01/28"
+            }
+          ]
+        },
+        {
+          "Name": "Art",
+          "Articles": [
+            {
+              "Title": "On the Inside Looking Out: The Fascinating World of Outsider Art",
+              "Date": "2019/01/28"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
