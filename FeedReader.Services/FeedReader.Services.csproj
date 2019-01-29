@@ -50,8 +50,10 @@
   <ItemGroup>
     <Compile Include="ArticleService.cs" />
     <Compile Include="CategoryService.cs" />
+    <Compile Include="FeedService.cs" />
     <Compile Include="IArticleService.cs" />
     <Compile Include="ICategoryService.cs" />
+    <Compile Include="IFeedService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
