@@ -16,16 +16,16 @@ namespace FeedReader.Web
         {
             if (context.Database.Exists())
             {
-                context.Database.Delete();
+                if (!context.Database.CompatibleWithModel(true))
+                {
+                    context.Database.Delete();
+                    context.Database.Create();
+                }
             }
-            context.Database.Create();
-
-            var user1 = CreateUser("marco" , "marco@rodriguezcoto.com");
-            var user2 = CreateUser("john", "jdoe@none.com");
-            var user3 = CreateUser("janne", "jsmith@noemail.com");
-            context.AspNetUsers.AddOrUpdate(p => p.Id, user1);
-            context.AspNetUsers.AddOrUpdate(p => p.Id, user2);
-            context.AspNetUsers.AddOrUpdate(p => p.Id, user3);
+            else
+            {
+                context.Database.Create();
+            }
 
             var category1 = new Category() { Id = 1, Name = "Sports", Image = "/Content/Categories/sports.jpg" };
             var category2 = new Category() { Id = 2, Name = "Gardening", Image = "/Content/Categories/gardening.jpg" };
@@ -43,34 +43,9 @@ namespace FeedReader.Web
             var article1 = new Article() { Id = 1, Title = "The 9 Best Sports to Accelerate Your Weight Loss", Body = "Swimming <br /> HIIT (High Intensity Interval Training) <br /> Running <br /> Rock Climbing <br /> Flag Football ...<br />", Feed = feed1, FeedId = 1, Image = "/Content/Categories/fitness.jpg", PublishedDate = DateTime.Parse("2018/12/24") };
             context.Articles.AddOrUpdate(article1);
 
-            user1.Categories.Add(category1);
-            user1.Categories.Add(category3);
-            user2.Categories.Add(category2);
-            user3.Categories.Add(category3);
-
-            user1.Feeds.Add(feed1);
-            user2.Feeds.Add(feed2);
-            user3.Feeds.Add(feed1);
-
             feed1.Articles.Add(article1);
 
             context.SaveChanges();
-        }
-
-        public AspNetUser CreateUser(string id, string email)
-        {
-            return new AspNetUser()
-            {
-                Id = id,
-                Email = email,
-                EmailConfirmed = true,
-                PasswordHash = "123",
-                PhoneNumberConfirmed = true,
-                TwoFactorEnabled = false,
-                LockoutEnabled = false,
-                AccessFailedCount = 0,
-                UserName = id
-            };
         }
     }
 }
