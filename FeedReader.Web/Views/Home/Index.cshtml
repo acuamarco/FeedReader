@@ -3,31 +3,28 @@
     ViewBag.Title = "Home Page";
 }
 
-<div class="jumbotron">
-    <h1>Feed Reader</h1>
-</div>
-
-<div class="row">
+<div class="category-thumbs">
     @foreach (var category in Model.Categories)
     {
-        <div class="col-md-4">
-            <a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">
-                @category.Name
-            </a>
-        </div>
+        <a href="@Url.Action("Index", "Home", new { categoryId = category.Id })" class="category-thumb">
+            <img class="category-thumb-image" src="@category.Image">
+            @category.Name
+        </a>
     }
 </div>
-<div class="row">
-    @foreach (var feed in Model.Feeds)
-    {
-        <div class="col-md-4">
-            <p>
-                <a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">
-                    @feed.Name
-                </a>
-            </p>
+<div class="">
+    <h2>
+        Personalize your feed!
+    </h2>
+    <div class="feed-slider">
+        @foreach (var feed in Model.Feeds)
+        {
+        <div class="feed-thumb">
+            <a href="@Url.Action("Index", "Home", new { feedId = feed.Id })" class="feed-follow">Follow</a>
+            <div class="feed-title ">@feed.Name</div>
         </div>
-    }
+        }
+    </div>
 </div>
 <div class="article-section">
     @foreach (var article in Model.Articles)

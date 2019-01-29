@@ -1,12 +1,12 @@
 ﻿body {
-    padding-top: 50px;
-    padding-bottom: 20px;
+    background-color: #e6e6e6;
 }
 
 /* Set padding to keep content from hitting the edges */
 .body-content {
-    padding-left: 15px;
-    padding-right: 15px;
+    margin: 0 auto;
+    max-width: 1270px;
+    background-color: white;
 }
 
 /* Override the default bootstrap behavior where horizontal description lists 
@@ -23,11 +23,77 @@ textarea {
     max-width: 280px;
 }
 
-#article-section {
+.category-thumbs {
+    display: flex;
+    justify-content: space-around;
+    padding: 8px;
+    background-color: white;
+    background-color: #fafafa;
+    border-bottom: 1px solid #e6e6e6;
+}
+.category-thumb {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+    margin: 0;
+    max-width: none;
+    overflow: hidden;
+    width: 100%;
+}
+
+.category-thumb-image {
+    height: 88px;
+    width: 88px;
+    box-shadow: 3px 2px 5px 0 #c2c2c2;
+    border-radius: 50%;
+    float: none;
+    margin-right: 0;
+}
+
+.feed-slider {
     display: flex;
 }
 
-#fixed-article-card {
+.feed-thumb {
+    margin: 0 6px 10px;
+    padding: 5px;
+    background-color: #fff;
+    border: solid 1px #dbdbda;
+    border-radius: 5px;
+    display: inline-block;
+    position: relative;
+    white-space: pre;
+    width: 200px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.feed-follow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    height: 65px;
+    width: 96px;
+    background-color: #ff7e1a;
+    color: #fff;
+    margin: auto;
+    text-align: center;
+    white-space: normal;
+}
+
+.feed-title {
+    font-weight: 500;
+    margin: auto;
+    text-align: center;
+    white-space: normal;
+}
+.article-section {
+    display: flex;
+}
+
+.fixed-article-card {
     border: 1px solid #e6e6e6;
     display: block;
     height: 435px;
@@ -38,7 +104,7 @@ textarea {
     position: relative;
 }
 
-#fixed-article-card-title {
+.fixed-article-card-title {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -50,7 +116,7 @@ textarea {
     width: auto;
 }
 
-#fixed-article-card-description {
+.fixed-article-card-description {
     font-size: 14px;
     font-size: .875rem;
     clear: both;
@@ -59,3 +125,4 @@ textarea {
     padding: 0 10px;
     width: 100%;
 }
+
