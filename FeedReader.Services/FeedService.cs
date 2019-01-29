@@ -14,7 +14,7 @@ namespace FeedReader.Services
             this.context = context;
         }
 
-        public Task<bool> Follow(User user)
+        public Task<bool> Follow(AspNetUser user)
         {
             throw new System.NotImplementedException();
         }
@@ -24,12 +24,12 @@ namespace FeedReader.Services
             return await context.Feeds.Include(f => f.Category).SingleAsync(f => f.Id == feedId);
         }
 
-        public Task<bool> IsFollowed(User user)
+        public Task<bool> IsFollowed(AspNetUser user)
         {
             throw new System.NotImplementedException();
         }
 
-        public Task<bool> Unfollow(User user)
+        public Task<bool> Unfollow(AspNetUser user)
         {
             throw new System.NotImplementedException();
         }

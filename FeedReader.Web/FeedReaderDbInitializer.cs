@@ -19,12 +19,12 @@ namespace FeedReader.Web
                 context.Database.Create();
             }
 
-            var user1 = new User() { Id = "marco" , Email = "marco@rodriguezcoto.com", PasswordHash = "123" };
-            var user2 = new User() { Id = "john", Email = "jdoe@none.com", PasswordHash = "123" };
-            var user3 = new User() { Id = "janne", Email = "jsmith@noemail.com", PasswordHash = "123" };
-            context.Users.AddOrUpdate(p => p.Id, user1);
-            context.Users.AddOrUpdate(p => p.Id, user2);
-            context.Users.AddOrUpdate(p => p.Id, user3);
+            var user1 = new AspNetUser() { Id = "marco" , Email = "marco@rodriguezcoto.com", PasswordHash = "123" };
+            var user2 = new AspNetUser() { Id = "john", Email = "jdoe@none.com", PasswordHash = "123" };
+            var user3 = new AspNetUser() { Id = "janne", Email = "jsmith@noemail.com", PasswordHash = "123" };
+            context.AspNetUsers.AddOrUpdate(p => p.Id, user1);
+            context.AspNetUsers.AddOrUpdate(p => p.Id, user2);
+            context.AspNetUsers.AddOrUpdate(p => p.Id, user3);
 
             var category1 = new Category() { Id = 1, Name = "Sports", Image = "/Content/Categories/sports.jpg" };
             var category2 = new Category() { Id = 2, Name = "Gardening", Image = "/Content/Categories/gardening.jpg" };

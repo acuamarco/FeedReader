@@ -11,7 +11,7 @@ namespace FeedReader.Repository.Model
         public Category()
         {
             Feeds = new HashSet<Feed>();
-            Users = new HashSet<User>();
+            Users = new HashSet<AspNetUser>();
         }
 
         public int Id { get; set; }
@@ -27,6 +27,6 @@ namespace FeedReader.Repository.Model
         public virtual ICollection<Feed> Feeds { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<User> Users { get; set; }
+        public virtual ICollection<AspNetUser> Users { get; set; }
     }
 }

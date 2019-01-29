@@ -6,8 +6,8 @@ namespace FeedReader.Services
     public interface IFeedService
     {
         Task<Feed> GetByIdWithCategory(int feedId);
-        Task<bool> Follow(User user);
-        Task<bool> Unfollow(User user);
-        Task<bool> IsFollowed(User user);
+        Task<bool> Follow(AspNetUser user);
+        Task<bool> Unfollow(AspNetUser user);
+        Task<bool> IsFollowed(AspNetUser user);
     }
 }

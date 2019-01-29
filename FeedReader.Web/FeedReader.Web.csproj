@@ -191,7 +191,6 @@
     <Compile Include="Controllers\FeedsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="FeedReaderDbInitializer.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -273,11 +272,6 @@
     <Content Include="Views\Feeds\Details.cshtml" />
     <Content Include="Views\Feeds\Edit.cshtml" />
     <Content Include="Views\Feeds\Index.cshtml" />
-    <Content Include="Views\Users\Create.cshtml" />
-    <Content Include="Views\Users\Delete.cshtml" />
-    <Content Include="Views\Users\Details.cshtml" />
-    <Content Include="Views\Users\Edit.cshtml" />
-    <Content Include="Views\Users\Index.cshtml" />
     <Content Include="Views\Home\Category.cshtml" />
     <Content Include="Views\Home\Feed.cshtml" />
     <Content Include="Views\Home\Article.cshtml" />
