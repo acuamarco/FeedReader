@@ -54,18 +54,6 @@ namespace FeedReader.Repository
                 .HasMany(e => e.Users)
                 .WithMany(e => e.Feeds)
                 .Map(m => m.ToTable("UserSubscription").MapLeftKey("FeedId").MapRightKey("UserId"));
-
-            modelBuilder.Entity<User>()
-                .Property(e => e.FirstName)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<User>()
-                .Property(e => e.LastName)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<User>()
-                .Property(e => e.Email)
-                .IsUnicode(false);
         }
     }
 }

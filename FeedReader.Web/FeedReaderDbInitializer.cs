@@ -17,13 +17,11 @@ namespace FeedReader.Web
             if (!context.Database.Exists())
             {
                 context.Database.Create();
-                //context.Database.Delete();
             }
-            
 
-            var user1 = new User() { Id = 1, FirstName = "Marco", LastName = "Rodriguez", Email = "marco@rodriguezcoto.com", IsAdmin = true, Password = "123" };
-            var user2 = new User() { Id = 2, FirstName = "John", LastName = "Doe", Email = "jdoe@none.com", IsAdmin = false, Password = "123" };
-            var user3 = new User() { Id = 3, FirstName = "Janne", LastName = "Smith", Email = "jsmith@noemail.com", IsAdmin = false, Password = "123" };
+            var user1 = new User() { Id = "marco" , Email = "marco@rodriguezcoto.com", PasswordHash = "123" };
+            var user2 = new User() { Id = "john", Email = "jdoe@none.com", PasswordHash = "123" };
+            var user3 = new User() { Id = "janne", Email = "jsmith@noemail.com", PasswordHash = "123" };
             context.Users.AddOrUpdate(p => p.Id, user1);
             context.Users.AddOrUpdate(p => p.Id, user2);
             context.Users.AddOrUpdate(p => p.Id, user3);
