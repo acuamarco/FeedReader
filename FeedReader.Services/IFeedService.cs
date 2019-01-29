@@ -5,9 +5,10 @@ namespace FeedReader.Services
 {
     public interface IFeedService
     {
+        void Follow(AspNetUser user, Feed feed);
         Task<Feed> GetByIdWithCategory(int feedId);
-        Task<bool> Follow(AspNetUser user);
-        Task<bool> Unfollow(AspNetUser user);
-        Task<bool> IsFollowed(AspNetUser user);
+        bool IsFollowed(AspNetUser user, Feed feed);
+        void Unfollow(AspNetUser user, Feed feed);
+        
     }
 }
