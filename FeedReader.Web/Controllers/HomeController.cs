@@ -22,20 +22,13 @@ namespace FeedReader.Web.Controllers
                 Categories = await db.Categories.ToListAsync(),
                 Feeds = await db.Feeds.ToListAsync()
             };
+            var userId = "";
             if (User.Identity.IsAuthenticated)
             {
-                var userId = User.Identity.GetUserId();
+                userId = User.Identity.GetUserId();
                 dashboard.Articles = await articleService.GetByUser(userId);
-            } else
-            {
-                dashboard.Articles = new List<Article>();
             }
-            if (dashboard.Articles.Count < 12)
-            {
-                var filler = await articleService.GetLast(12 - dashboard.Articles.Count);
-                dashboard.Articles.AddRange(filler);
-            }
-
+            dashboard.OtherArticles = await articleService.GetLast(userId);
             return View(dashboard);
         }
 
@@ -60,7 +53,7 @@ namespace FeedReader.Web.Controllers
             if (User.Identity.IsAuthenticated)
             {
                 var userId = User.Identity.GetUserId();
-                var user = await db.AspNetUsers.Include(u => u.Feeds).SingleAsync(u => u.Id == userId);
+                var user = await db.AspNetUsers.Include(u => u.Feeds).SingleOrDefaultAsync(u => u.Id == userId);
                 if (follow != null)
                 {
                     if (follow == 1)

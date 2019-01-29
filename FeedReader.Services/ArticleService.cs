@@ -51,9 +51,10 @@ namespace FeedReader.Services
                 .ToListAsync();
         }
 
-        public async Task<List<Article>> GetLast(int max = 12)
+        public async Task<List<Article>> GetLast(string userId, int max = 12)
         {
             return await context.Articles
+                .Where(a => a.Feed.Users.All(u => u.Id != userId))
                 .OrderByDescending(a => a.PublishedDate)
                 .Take(max)
                 .ToListAsync();

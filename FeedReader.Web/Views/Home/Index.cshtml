@@ -16,10 +16,23 @@
     </div>
 }
 
-@if (Model.Feeds != null) {
+@if (Model.Feeds != null)
+{
     @Html.Partial("_FeedsSection", Model.Feeds)
 }
 
-@if (Model.Articles != null) {
+@if (Model.Articles != null && Model.Articles.Count > 0)
+{
     @Html.Partial("_ArticlesSection", Model.Articles)
+}
+else
+{
+    <div>
+        Customize your homepage by following feeds
+    </div>
+}
+
+@if (Model.OtherArticles != null && Model.OtherArticles.Count > 0)
+{
+    @Html.Partial("_ArticlesSection", Model.OtherArticles)
 }
