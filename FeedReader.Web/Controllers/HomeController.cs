@@ -4,6 +4,9 @@ using FeedReader.Web.Models;
 using System.Data.Entity;
 using System.Threading.Tasks;
 using System.Web.Mvc;
+using Microsoft.AspNet.Identity;
+using System.Collections.Generic;
+using FeedReader.Repository.Model;
 
 namespace FeedReader.Web.Controllers
 {
@@ -13,11 +16,25 @@ namespace FeedReader.Web.Controllers
 
         public async Task<ActionResult> Index()
         {
-            //TODO: filter based on selection and user preferences
-            var dashboard = new Dashboard();
-            dashboard.Categories = await db.Categories.ToListAsync();
-            dashboard.Feeds = await db.Feeds.ToListAsync();
-            dashboard.Articles = await db.Articles.ToListAsync();
+            var articleService = new ArticleService(db);
+            var dashboard = new Dashboard
+            {
+                Categories = await db.Categories.ToListAsync(),
+                Feeds = await db.Feeds.ToListAsync()
+            };
+            if (User.Identity.IsAuthenticated)
+            {
+                var userId = User.Identity.GetUserId();
+                dashboard.Articles = await articleService.GetByUser(userId);
+            } else
+            {
+                dashboard.Articles = new List<Article>();
+            }
+            if (dashboard.Articles.Count < 12)
+            {
+                var filler = await articleService.GetLast(12 - dashboard.Articles.Count);
+                dashboard.Articles.AddRange(filler);
+            }
 
             return View(dashboard);
         }
@@ -34,13 +51,33 @@ namespace FeedReader.Web.Controllers
             return View(dashboard);
         }
 
-        public async Task<ActionResult> Feed(int feedId)
+        public async Task<ActionResult> Feed(int feedId, int? follow)
         {
             var feedService = new FeedService(db);
             var articleService = new ArticleService(db);
+            var feed = await feedService.GetByIdWithCategory(feedId);
+            var isFollowed = false;
+            if (User.Identity.IsAuthenticated)
+            {
+                var userId = User.Identity.GetUserId();
+                var user = await db.AspNetUsers.Include(u => u.Feeds).SingleAsync(u => u.Id == userId);
+                if (follow != null)
+                {
+                    if (follow == 1)
+                    {
+                        feedService.Follow(user, feed);
+                    } else
+                    {
+                        feedService.Unfollow(user, feed);
+                    }
+                }
+                isFollowed = user.Feeds.Contains(feed);
+            }
+
             var dashboard = new FeedDashboard
             {
-                Feed = await feedService.GetByIdWithCategory(feedId),
+                Feed = feed,
+                Followed = isFollowed,
                 Articles = await articleService.GetByFeed(feedId)
             };
             return View(dashboard);

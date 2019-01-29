@@ -4,7 +4,11 @@
     ViewBag.Title = Model.Category.Name;
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
+<ol class="breadcrumb">
+    <li>
+        @Html.ActionLink("Home", "Index", "Home")
+    </li>
+</ol>
 <img src="@Model.Category.Image" class="category-image" />
 <div class="category-name">@Model.Category.Name</div>
 

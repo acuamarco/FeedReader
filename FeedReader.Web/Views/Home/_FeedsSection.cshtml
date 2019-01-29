@@ -5,10 +5,9 @@
     <div class="feed-slider">
         @foreach (var feed in Model)
         {
-            <div class="feed-thumb">
-                <a href="@Url.Action("Feed", "Home", new { feedId = feed.Id })" class="feed-follow">Follow</a>
-                <div class="feed-title ">@feed.Name</div>
-            </div>
+        <div class="feed-thumb">
+            <a href="@Url.Action("Feed", "Home", new { feedId = feed.Id })" class="feed-title ">@feed.Name</a>
+        </div>
         }
     </div>
 }

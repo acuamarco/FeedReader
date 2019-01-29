@@ -4,15 +4,41 @@
     ViewBag.Title = Model.Title;
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<h3>@Model.Title</h3>
+<ol class="breadcrumb">
+    <li>
+        @Html.ActionLink("Home", "Index", "Home")
+    </li>
+    <li>
+        @Html.ActionLink(Model.Feed.Name, "Feed", "Home", new { feedId = Model.FeedId }, null)
+    </li>
+</ol>
 <div>
-    <div>
-        @Html.Raw(Model.Body)
-    </div>
-    <div>
-        <img src="@Model.Image" />
-    </div>
-    <div>
-        @Model.PublishedDate
+    <div class="article-box">
+        <div class="article-title">@Model.Title</div>
+        <hr />
+        <div id="lipsum">
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras venenatis pulvinar ultricies. Donec risus leo, semper auctor libero sed, ultricies tempus sem. Vestibulum vel enim augue. Donec sapien leo, fermentum ut auctor eget, sollicitudin vehicula tortor. Vestibulum malesuada mollis tincidunt. Suspendisse consequat vulputate nulla, sed tristique tortor molestie in. Donec egestas purus nec nulla convallis, sed dignissim massa vehicula. Vestibulum aliquet hendrerit lorem, et volutpat nulla. Proin in augue risus. Proin et sagittis orci. Fusce non augue mi. Suspendisse blandit turpis eget ex blandit pellentesque. Ut pretium quam sit amet lacinia tincidunt. Nullam vehicula velit quis ligula tempor condimentum.
+            </p>
+            @if (!string.IsNullOrEmpty(Model.Image))
+            {
+                <img src="@Model.Image" style="float: right" />
+            }
+            <p>
+                Donec dictum nisi eu arcu imperdiet, eu feugiat est luctus. Mauris velit felis, sagittis nec ipsum fringilla, euismod hendrerit mi. Pellentesque nec imperdiet lorem, a porta leo. Morbi tincidunt lorem non risus malesuada pulvinar. Fusce sit amet quam nec elit ultrices fringilla. Suspendisse iaculis interdum rutrum. Etiam rutrum tempor arcu, eget volutpat turpis. Sed ac quam justo. Aenean turpis enim, commodo a lectus sit amet, luctus facilisis lorem. Maecenas nec pretium nibh, sed auctor diam. Proin ultrices justo ut neque imperdiet, vitae bibendum nunc aliquam. Aliquam ut turpis id enim lacinia tristique at sed sapien. Mauris pellentesque commodo ante sed aliquet. Proin et pulvinar lorem.
+            </p>
+            <p>
+                Sed rutrum turpis sed turpis auctor aliquam. In hac habitasse platea dictumst. Nullam cursus metus a lacus euismod ornare. Curabitur massa dolor, condimentum ut leo at, malesuada ultrices purus. Curabitur tristique leo vel magna sodales, nec convallis neque semper. Nulla efficitur aliquet justo id luctus. Etiam sapien dui, maximus vel scelerisque et, molestie non quam. Morbi metus leo, varius non est convallis, lobortis lobortis nisl. Proin faucibus risus ac sagittis sodales. Phasellus pellentesque justo sed libero tempor malesuada. Ut aliquet ligula leo, vitae volutpat mi dictum eget. Integer faucibus purus eget fermentum imperdiet. Aliquam accumsan lorem et orci imperdiet pretium. Duis tincidunt porttitor dictum. Morbi malesuada ante eu orci porta lobortis. Donec condimentum eget urna vel viverra.
+            </p>
+            <p>
+                Sed vulputate leo id neque feugiat, mattis blandit turpis imperdiet. Nulla eu nibh leo. Quisque tempor tincidunt sapien nec condimentum. Pellentesque sollicitudin tempor gravida. Aliquam congue id arcu porttitor bibendum. Duis non mollis erat. Sed vel mauris erat. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; In ullamcorper aliquam quam, ut iaculis sapien tristique sed. Nam a felis ut erat pellentesque lobortis. Etiam malesuada finibus felis ultrices tempus. Ut nulla neque, tincidunt et nisl sit amet, vehicula venenatis ligula. Proin ut lacus nulla. Nam blandit luctus neque ut feugiat.
+            </p>
+            <p>
+                Mauris tincidunt nisl eget feugiat imperdiet. Nullam ornare ultrices leo, in viverra risus. Praesent aliquam urna ut lorem imperdiet eleifend. Cras pulvinar pellentesque aliquet. Nulla mi massa, euismod eu sem vel, pellentesque semper lorem. Ut faucibus mattis arcu sit amet sodales. Donec dolor neque, ullamcorper sed congue id, laoreet non nisl. Donec lectus massa, dapibus ac facilisis quis, egestas sed mi. Nulla libero mi, mattis vitae ex a, eleifend consequat urna. Donec commodo felis quis purus faucibus, eu suscipit turpis tincidunt. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec vel venenatis lacus. Sed vitae tempus ipsum. Vivamus est magna, elementum at condimentum id, bibendum et dolor. Phasellus ut tortor eget quam pretium tempus. Curabitur sollicitudin sagittis ipsum vitae fermentum.
+            </p>
+        </div>
+        <div class="article-footer">
+            Published @Model.PublishedDate
+        </div>
     </div>
 </div>
