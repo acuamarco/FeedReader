@@ -2,7 +2,6 @@
 using System.Threading.Tasks;
 using FeedReader.Repository;
 using FeedReader.Repository.Model;
-using System.Data.Entity;
 using System.Linq;
 using System.Collections.Generic;
 
