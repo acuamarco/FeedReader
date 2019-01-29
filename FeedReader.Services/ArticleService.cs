@@ -16,13 +16,29 @@ namespace FeedReader.Services
             this.context = context;
         }
 
-        public async Task<List<Article>> GetArticlesByCategory(int categoryId, int max = 10)
+        public async Task<List<Article>> GetByCategory(int categoryId, int max = 10)
         {
             return await context.Articles
                 .Where(a => a.Feed.CategoryId == categoryId)
                 .OrderByDescending(a => a.PublishedDate)
                 .Take(max)
                 .ToListAsync();
+        }
+
+        public async Task<List<Article>> GetByFeed(int feedId, int max = 10)
+        {
+            return await context.Articles
+                .Where(a => a.Feed.Id == feedId)
+                .OrderByDescending(a => a.PublishedDate)
+                .Take(max)
+                .ToListAsync();
+        }
+
+        public async Task<Article> GetById(int articleId)
+        {
+            return await context.Articles
+                .Where(a => a.Id == articleId)
+                .SingleAsync();
         }
     }
 }

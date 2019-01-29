@@ -8,32 +8,6 @@
 <img src="@Model.Category.Image" class="category-image" />
 <div class="category-name">@Model.Category.Name</div>
 
-@if (Model.Category.Feeds != null && Model.Category.Feeds.Count > 0)
-{
-    <div class="feed-slider">
-        @foreach (var feed in Model.Category.Feeds)
-        {
-            <div class="feed-thumb">
-                <a href="@Url.Action("Feed", "Home", new { feedId = feed.Id })" class="feed-follow">Follow</a>
-                <div class="feed-title ">@feed.Name</div>
-            </div>
-        }
-    </div>
-}
+@Html.Partial("_FeedsSection", Model.Category.Feeds.ToList())
 
-@if (Model.Articles != null && Model.Articles.Count > 0)
-{
-    <div class="article-section">
-        @foreach (var article in Model.Articles)
-        {
-            <div class="fixed-article-card">
-                <h3 class="fixed-article-card-title">
-                    @article.Title
-                </h3>
-                <div class="fixed-article-card-description">
-                    @article.Body
-                </div>
-            </div>
-        }
-    </div>
-}
+@Html.Partial("_ArticlesSection", Model.Articles)

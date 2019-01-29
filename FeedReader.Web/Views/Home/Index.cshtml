@@ -5,46 +5,17 @@
 
 @if (Model.Categories != null && Model.Categories.Count > 0)
 {
-<div class="category-thumbs">
-    @foreach (var category in Model.Categories)
-    {
-        <a href="@Url.Action("Category", "Home", new { categoryId = category.Id })" class="category-thumb">
-            <img class="category-thumb-image" src="@category.Image">
-            @category.Name
-        </a>
-    }
-</div>
-}
-@if (Model.Feeds != null && Model.Feeds.Count > 0)
-{
-<div class="">
-    <h2>
-        Personalize your feed!
-    </h2>
-    <div class="feed-slider">
-        @foreach (var feed in Model.Feeds)
+    <div class="category-thumbs">
+        @foreach (var category in Model.Categories)
         {
-        <div class="feed-thumb">
-            <a href="@Url.Action("Index", "Home", new { feedId = feed.Id })" class="feed-follow">Follow</a>
-            <div class="feed-title ">@feed.Name</div>
-        </div>
+            <a href="@Url.Action("Category", "Home", new { categoryId = category.Id })" class="category-thumb">
+                <img class="category-thumb-image" src="@category.Image">
+                @category.Name
+            </a>
         }
     </div>
-</div>
 }
-@if (Model.Articles != null && Model.Articles.Count > 0)
-{
-<div class="article-section">
-    @foreach (var article in Model.Articles)
-    {
-        <div class="fixed-article-card">
-            <h3 class="fixed-article-card-title">
-                @article.Title
-            </h3>
-            <div class="fixed-article-card-description">
-                @article.Body
-            </div>
-        </div>
-    }
-</div>
-}
+
+@Html.Partial("_FeedsSection", Model.Feeds)
+
+@Html.Partial("_ArticlesSection", Model.Articles)

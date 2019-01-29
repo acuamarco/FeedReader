@@ -1,0 +1,11 @@
+﻿@model FeedReader.Web.Models.FeedDashboard
+
+@{
+    ViewBag.Title = Model.Feed.Category.Name + " - " + Model.Feed.Name;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<img src="@Model.Feed.Image" class="category-image" />
+<div class="feed-name">@Model.Feed.Name</div>
+
+@Html.Partial("_ArticlesSection", Model.Articles)

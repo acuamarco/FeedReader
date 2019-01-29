@@ -1,11 +1,11 @@
-﻿using System;
+﻿using FeedReader.Repository.Model;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 
 namespace FeedReader.Web.Models
 {
     public class FeedDashboard
     {
+        public Feed Feed { get; set; }
+        public List<Article> Articles { get; set; }
     }
 }
