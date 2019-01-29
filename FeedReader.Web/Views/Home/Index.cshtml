@@ -16,6 +16,10 @@
     </div>
 }
 
-@Html.Partial("_FeedsSection", Model.Feeds)
+@if (Model.Feeds != null) {
+    @Html.Partial("_FeedsSection", Model.Feeds)
+}
 
-@Html.Partial("_ArticlesSection", Model.Articles)
+@if (Model.Articles != null) {
+    @Html.Partial("_ArticlesSection", Model.Articles)
+}
