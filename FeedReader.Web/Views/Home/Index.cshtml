@@ -3,15 +3,20 @@
     ViewBag.Title = "Home Page";
 }
 
+@if (Model.Categories != null && Model.Categories.Count > 0)
+{
 <div class="category-thumbs">
     @foreach (var category in Model.Categories)
     {
-        <a href="@Url.Action("Index", "Home", new { categoryId = category.Id })" class="category-thumb">
+        <a href="@Url.Action("Category", "Home", new { categoryId = category.Id })" class="category-thumb">
             <img class="category-thumb-image" src="@category.Image">
             @category.Name
         </a>
     }
 </div>
+}
+@if (Model.Feeds != null && Model.Feeds.Count > 0)
+{
 <div class="">
     <h2>
         Personalize your feed!
@@ -26,6 +31,9 @@
         }
     </div>
 </div>
+}
+@if (Model.Articles != null && Model.Articles.Count > 0)
+{
 <div class="article-section">
     @foreach (var article in Model.Articles)
     {
@@ -39,3 +47,4 @@
         </div>
     }
 </div>
+}

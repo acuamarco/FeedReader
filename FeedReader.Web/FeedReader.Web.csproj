@@ -197,7 +197,9 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\CategoryDashboard.cs" />
     <Compile Include="Models\Dashboard.cs" />
+    <Compile Include="Models\FeedDashboard.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -274,6 +276,7 @@
     <Content Include="Views\Users\Details.cshtml" />
     <Content Include="Views\Users\Edit.cshtml" />
     <Content Include="Views\Users\Index.cshtml" />
+    <Content Include="Views\Home\Category.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -295,6 +298,10 @@
     <ProjectReference Include="..\FeedReader.Repository\FeedReader.Repository.csproj">
       <Project>{2c4be193-35a1-4b2a-9fea-e06f2436fc5e}</Project>
       <Name>FeedReader.Repository</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FeedReader.Services\FeedReader.Services.csproj">
+      <Project>{4a6545e7-b814-4a97-b8a8-dacd81930a9e}</Project>
+      <Name>FeedReader.Services</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

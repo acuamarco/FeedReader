@@ -1,4 +1,5 @@
 ﻿using FeedReader.Repository;
+using FeedReader.Services;
 using FeedReader.Web.Models;
 using System;
 using System.Collections.Generic;
@@ -37,6 +38,16 @@ namespace FeedReader.Web.Controllers
             ViewBag.Message = "Your contact page.";
 
             return View();
+        }
+
+        public async Task<ActionResult> Category(int categoryId)
+        {
+            var categoryDashboard = new CategoryDashboard();
+            var categoryService = new CategoryService(db);
+            categoryDashboard.Category = await categoryService.GetByIdWithFeeds(categoryId);
+            var articleService = new ArticleService(db);
+            categoryDashboard.Articles = await articleService.GetArticlesByCategory(categoryId);
+            return View(categoryDashboard);
         }
     }
 }
