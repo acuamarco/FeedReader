@@ -14,9 +14,13 @@ namespace FeedReader.Services
             this.context = context;
         }
 
-        public Task<bool> Follow(AspNetUser user)
+        public void Follow(AspNetUser user, Feed feed)
         {
-            throw new System.NotImplementedException();
+            if (!user.Feeds.Contains(feed))
+            {
+                user.Feeds.Add(feed);
+                context.SaveChanges();
+            }
         }
 
         public async Task<Feed> GetByIdWithCategory(int feedId)
@@ -24,14 +28,18 @@ namespace FeedReader.Services
             return await context.Feeds.Include(f => f.Category).SingleAsync(f => f.Id == feedId);
         }
 
-        public Task<bool> IsFollowed(AspNetUser user)
+        public bool IsFollowed(AspNetUser user, Feed feed)
         {
             throw new System.NotImplementedException();
         }
 
-        public Task<bool> Unfollow(AspNetUser user)
+        public void Unfollow(AspNetUser user, Feed feed)
         {
-            throw new System.NotImplementedException();
+            if (user.Feeds.Contains(feed))
+            {
+                user.Feeds.Remove(feed);
+                context.SaveChanges();
+            }
         }
     }
 }
