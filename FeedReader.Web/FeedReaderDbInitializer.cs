@@ -14,11 +14,12 @@ namespace FeedReader.Web
     {
         public void InitializeDatabase(FeedReaderContext context)
         {
-            if (context.Database.Exists())
+            if (!context.Database.Exists())
             {
-                context.Database.Delete();
+                context.Database.Create();
+                //context.Database.Delete();
             }
-            context.Database.Create();
+            
 
             var user1 = new User() { Id = 1, FirstName = "Marco", LastName = "Rodriguez", Email = "marco@rodriguezcoto.com", IsAdmin = true, Password = "123" };
             var user2 = new User() { Id = 2, FirstName = "John", LastName = "Doe", Email = "jdoe@none.com", IsAdmin = false, Password = "123" };

@@ -6,7 +6,7 @@ namespace FeedReader.Repository
     public partial class FeedReaderContext : DbContext
     {
         public FeedReaderContext()
-            : base("name=FeedReaderContext")
+            : base("DefaultConnection")
         {
         }
 
